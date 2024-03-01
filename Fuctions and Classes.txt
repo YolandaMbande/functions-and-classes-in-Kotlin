@@ -1,0 +1,141 @@
+1. fun main() {
+    val morningNotification = 51
+    val eveningNotification = 135
+    
+    printNotificationSummary(morningNotification)
+    printNotificationSummary(eveningNotification)
+}
+fun printNotificationSummary(numberOfMessages: Int) {
+    if(numberOfMessages < 100)
+    {
+        println("You have "+ numberOfMessages + " notifications.")
+    } else if(numberOfMessages == 100)
+    {
+        println("Your phone has exactly 100 notifications.")
+    } else {
+        println("Your phone is blowing up! You have 99+ notifications!")
+    }
+}
+
+2. fun main() {
+    val child = 5
+    val adult = 28
+    val senior = 87
+    
+    val isMonday = true
+    
+    println("The movie ticket price for a person aged $child is \$${ticketPrice(child, isMonday)}.")
+    println("The movie ticket price for a person aged $adult is \$${ticketPrice(adult, isMonday)}.")
+    println("The movie ticket price for a person aged $senior is \$${ticketPrice(senior, isMonday)}.")
+}
+
+fun ticketPrice(age: Int, isMonday: Boolean): Int {
+   return when (age) {
+    in 0..12 -> 15 
+    in 13..60 -> if (isMonday) 25 else 30 
+    in 61..100 -> 20 
+    else -> -1
+  } 
+}
+
+3. fun main() {
+  // Celsius to Fahrenheit
+  printFinalTemperature(27.0, "Celsius", "Fahrenheit", { initialMeasurement -> 9.0 / 5.0 * initialMeasurement + 32.0 })
+  
+  // Kelvin to Celsius
+  printFinalTemperature(350.0, "Kelvin", "Celsius", { initialMeasurement -> initialMeasurement - 273.15 })
+  
+  // Fahrenheit to Kelvin
+  printFinalTemperature(10.0, "Fahrenheit", "Kelvin", { initialMeasurement -> 5.0 / 9.0 * (initialMeasurement - 32.0) + 273.15 })
+}
+
+fun printFinalTemperature(
+  initialMeasurement: Double,
+  initialUnit: String,
+  finalUnit: String,
+  conversionFormula: (Double) -> Double
+) {
+  val finalMeasurement = String.format("%.2f", conversionFormula(initialMeasurement))
+  println("$initialMeasurement degrees $initialUnit is $finalMeasurement degrees $finalUnit.")
+}
+
+4. class Song(val title: String, val artist: String, val yearPublished: Int, val playCount: Int) {
+
+  val isPopular: Boolean
+    get() = playCount >= 1000
+
+  fun printDescription() {
+    val popularity = if (isPopular) "popular" else "unpopular"
+    println("$title, performed by $artist, was released in $yearPublished, and has $playCount plays. It is considered $popularity.")
+  }
+}
+ 5. fun main() {
+  val amanda = Person("Amanda", 33, "play tennis", null)
+  val atiqah = Person("Atiqah", 28, "climb", amanda)
+
+  amanda.showProfile()
+  atiqah.showProfile()
+}
+
+class Person(val name: String, val age: Int, val hobby: String?, val referrer: Person?) {
+  fun showProfile() {
+    println("Name: $name")
+    println("Age: $age")
+    println("Likes to ${hobby ?: "doesn't have a hobby"}.")
+    if (referrer != null) {
+      println("Has a referrer named ${referrer.name}, who likes to ${referrer.hobby ?: "doesn't have a hobby"}.")
+    } else {
+      println("Doesn't have a referrer.")
+    }
+  }
+}
+
+6.open class Phone(var isScreenLightOn: Boolean = false) {
+  fun switchOn() {
+    isScreenLightOn = true
+  }
+
+  fun switchOff() {
+    isScreenLightOn = false
+  }
+
+  fun checkPhoneScreenLight() {
+    val phoneScreenLight = if (isScreenLightOn) "on" else "off"
+    println("The phone screen's light is $phoneScreenLight.")
+  }
+}
+
+class FoldablePhone(
+  isScreenLightOn: Boolean = false,
+  var isFolded: Boolean = false
+) : Phone(isScreenLightOn) {
+
+  override fun switchOn() {
+    if (!isFolded) {
+      super.switchOn() // Call the parent class's switchOn
+    } else {
+      println("The phone is folded and cannot turn on the screen.")
+    }
+  }
+
+  fun fold() {
+    isFolded = true
+  }
+
+  fun unfold() {
+    isFolded = false
+  }
+}
+
+7.class Bid(val amount: Int, val bidder: String)
+
+fun auctionPrice(bid: Bid?, minimumPrice: Int): Int {
+  return bid?.amount ?: minimumPrice // Use Elvis operator for concise null handling
+}
+
+fun main() {
+  val winningBid = Bid(5000, "Private Collector")
+  
+  println("Item A is sold at ${auctionPrice(winningBid, 2000)}.")
+  println("Item B is sold at ${auctionPrice(null, 3000)}.")
+}

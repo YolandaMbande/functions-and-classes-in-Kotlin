@@ -1,0 +1,152 @@
+1. fun main() {
+    val message1 = "Using the val keyword when the value doesn't change."
+    println(message1)
+
+    var message2 = "Using the var keyword when the value can change."
+    println(message2)
+
+    val message3 = "When you define a function, you define the parameters that can be passed to it."
+    println(message3)
+
+    val message4 = "When you call a function, you pass arguments for the parameters."
+    println(message4)
+}
+
+2.  1)The string is not properly closed with a double quotation mark (' " ').
+      2) The closing parenthesis (')') is missing at the end of the println function call.
+
+3. The variables declared with val are immutable and cannot be reassigned once initialized.
+I would declare discountPercentage and offer variables using the var keyword so that their values can be modified after initialization.
+The output: "Sale - Up to 20% discount on Google Chromecast! Hurry up!"
+
+4. Step 1:
+The output of this program would be:
+The total party size is: 2030
+
+Step 2:
+fun main() {
+    val numberOfAdults = 20
+    val numberOfKids = 30
+    val total = numberOfAdults + numberOfKids
+    println("The total party size is: $total")
+}
+ 
+5. The output of the code will be: 
+"Congratulations for your bonus! You will receive a total of 5000 + 1000 (additional bonus)."
+No, the output in Kotlin is : Congratulations for your bonus! You will receive a total of 6000 (additional bonus).
+
+6. Step 1: 
+fun main() {
+    val firstNumber = 10
+    val secondNumber = 5
+    val result = firstNumber + secondNumber
+    
+    println("$firstNumber + $secondNumber = $result")
+}
+Step 2: 
+fun add(a: Int, b: Int): Int {
+    return a + b
+}
+Step 3:
+fun main() {
+    val firstNumber = 10
+    val secondNumber = 5
+    val thirdNumber = 8
+    
+    val result = add(firstNumber, secondNumber)
+    val anotherResult = add(firstNumber, thirdNumber)
+    val subtractedResult = subtract(firstNumber, secondNumber)
+    val anotherSubtractedResult = subtract(firstNumber, thirdNumber)
+
+    println("$firstNumber + $secondNumber = $result")
+    println("$firstNumber + $thirdNumber = $anotherResult")
+    println("$firstNumber - $secondNumber = $subtractedResult")
+    println("$firstNumber - $thirdNumber = $anotherSubtractedResult")
+}
+
+fun add(a: Int, b: Int): Int {
+    return a + b
+}
+
+fun subtract(a: Int, b: Int): Int {
+    return a - b
+}
+
+7. Step 1: 
+1) fun displayAlertMessage(operatingSystem: String, emailId: String): String {
+    return "There's a new sign-in request on $operatingSystem for your Google Account $emailId."
+}
+2) Yes.
+Step 2: 
+fun displayAlertMessage(emailId: String, operatingSystem: String = "Unknown OS"): String {
+    return "There's a new sign-in request on $operatingSystem for your Google Account $emailId."
+}
+
+fun main() {
+    val firstUserEmailId = "user_one@gmail.com"
+    println(displayAlertMessage(firstUserEmailId))
+    println()
+
+    val secondUserOperatingSystem = "Windows"
+    val secondUserEmailId = "user_two@gmail.com"
+    println(displayAlertMessage(secondUserEmailId, secondUserOperatingSystem))
+    println()
+
+    val thirdUserOperatingSystem = "Mac OS"
+    val thirdUserEmailId = "user_three@gmail.com"
+    println(displayAlertMessage(thirdUserEmailId, thirdUserOperatingSystem))
+    println()
+}
+
+8.
+fun main() {
+    val steps = 4000
+    val caloriesBurned = calculateCaloriesBurned(steps)
+    println("Walking $steps steps burns $caloriesBurned calories") 
+}
+
+fun calculateCaloriesBurned(numberOfSteps: Int): Double {
+    val caloriesBurnedForEachStep = 0.04
+    val totalCaloriesBurned = numberOfSteps * caloriesBurnedForEachStep
+    return totalCaloriesBurned
+}
+
+9.
+fun compareScreenTime(timeSpentToday: Int, timeSpentYesterday: Int): Boolean {
+    return timeSpentToday > timeSpentYesterday
+}
+
+fun main() {
+    val timeSpentToday = 300
+    val timeSpentYesterday = 250
+    println("Did you spend more time on your phone today compared to yesterday? ${compareScreenTime(timeSpentToday, timeSpentYesterday)}")
+
+    val timeSpentToday2 = 300
+    val timeSpentYesterday2 = 300
+    println("Did you spend more time on your phone today compared to yesterday? ${compareScreenTime(timeSpentToday2, timeSpentYesterday2)}")
+
+    val timeSpentToday3 = 200
+    val timeSpentYesterday3 = 220
+    println("Did you spend more time on your phone today compared to yesterday? ${compareScreenTime(timeSpentToday3, timeSpentYesterday3)}")
+}
+
+10.fun printWeather(city: String, lowTemp: Int, highTemp: Int, chanceOfRain: Int) {
+    println("City: $city")
+    println("Low temperature: $lowTemp, High temperature: $highTemp")
+    println("Chance of rain: $chanceOfRain%")
+    println()
+}
+
+fun main() {
+    printWeather("Ankara", 27, 31, 82)
+    printWeather("Tokyo", 32, 36, 10)
+    printWeather("Cape Town", 59, 64, 2)
+    printWeather("Guatemala City", 50, 55, 7)
+}
+
+
+
+
+
+
+
